@@ -1,0 +1,178 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        
+        <style>
+            /* Chat containers */
+            .container {
+              border: 2px solid #dedede;
+              background-color: #f1f1f1;
+              border-radius: 5px;
+              padding: 10px;
+              margin: 10px 0;
+            }
+            
+            /* Darker chat container */
+            .darker {
+              border-color: #ccc;
+              background-color: #ddd;
+            }
+            
+            /* Clear floats */
+            .container::after {
+              content: "";
+              clear: both;
+              display: table;
+            }
+            
+            /* Style images */
+            .container img {
+              float: left;
+              max-width: 60px;
+              width: 100%;
+              margin-right: 20px;
+              border-radius: 50%;
+            }
+            
+            /* Style the right image */
+            .container img.right {
+              float: right;
+              margin-left: 20px;
+              margin-right:0;
+            }
+            
+            /* Style time text */
+            .time-right {
+              float: right;
+              color: #aaa;
+            }
+            
+            /* Style time text */
+            .time-left {
+              float: left;
+              color: #999;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="sneakers" align="center">
+            <h1>Sneakers</h1>
+        </div>
+        
+        <div id="chatBox">
+        
+            
+        </div>
+        
+        <div>
+                <p id="typeNotifier" style="display: none;">AI Brandon is typing...</p>
+                <textarea id="userInput" rows="4" cols="190" placeholder="Type here to send message AI Brandon"></textarea>
+                <button style="display: none;" id="myBtn" onclick="javascript:alert('Hello World!')">Button</button>
+        </div>  
+        
+        <script>
+            
+            function random(items){
+                var item = items[Math.floor(Math.random() * items.length)]; 
+                return item;
+             }
+            
+            var input = document.getElementById("userInput");
+            
+            let aIResponses = ['Really now?', 'If you say so...', 'I am really not sure', 'Lebron James'];
+            let aIResponseTimes = [5000, 3000, 8000, 4000, 2000];
+            input.addEventListener("keyup", function(event) {
+                let typeNotifier = document.getElementById("typeNotifier");
+                let chatBox = document.getElementById("chatBox");
+                let message = input.value;
+                console.log(input.innerHTML);
+                let newMessageBox = document.createElement('div');
+                newMessageBox.classList.add("container");
+                newMessageBox.innerHTML = `
+                    <img src="/w3images/bandmember.jpg" alt="Avatar">
+                    <p>${message}</p>
+                    <span class="time-right">11:02</span>
+                    `;
+                
+                if (event.keyCode === 13) {
+                    event.preventDefault();
+                    
+                    chatBox.appendChild(newMessageBox);
+                    console.log(input);
+                    input.value = " ";
+                    typeNotifier.style.display = "block";
+                
+                    message = message.toString();
+                    message = message.replace(/\r\n|\n|\r)/gm, "");
+                    message = message.toLowerCase();
+                    
+                    
+                   
+                    if (message.includes("how are you") ) {
+                        text = "I'm pretty good since I'm a computer program.";
+                    }else if (message.includes("your name")){
+                       text = "My name is Dr. Windows!"; 
+                    }else if (message.includes("favorite color")){
+                       text = "I don't have a favorite color, I use all of them all the time!"; 
+                    }else if (message.includes("favorite sport")){
+                       text = "My favorite sport is code. Wait.. is that even a sport?"; 
+                    }else if (message.includes("favorite game")){
+                       text = "I think my favorite sport is Minecraft"; 
+                    }else if (message.includes("are you doing")){
+                       text = "I am talking to you.. :)"; 
+                    }else if (message.includes("What is your favorite color?")){
+                       text = "All of 'em."; 
+                    }else if (message.includes("What is your favorite color?")){
+                       text = "All of 'em."; 
+                    }else if (message.includes("What is your favorite color?")){
+                       text = "All of 'em."; 
+                    }else if (message.includes("What is your favorite color?")){
+                       text = "All of 'em."; 
+                    }else if (message.includes("What is your favorite color?")){
+                       text = "All of 'em."; 
+                    }else if (message.includes("What is your favorite color?")){
+                       text = "All of 'em."; 
+                    }else if (message.includes("What is your favorite color?")){
+                       text = "All of 'em."; 
+                    }else if (message.includes("What is your favorite color?")){
+                       text = "All of 'em."; 
+                    }else if (message.includes("What is your favorite color?")){
+                       text = "All of 'em."; 
+                    }else if (message.includes("What is your favorite color?")){
+                       text = "All of 'em."; 
+                    }else if (message.includes("What is your favorite color?")){
+                       text = "All of 'em."; 
+                    }else if (message.includes("What is your favorite color?")){
+                       text = "All of 'em."; 
+                    }else if (message.includes("What is your favorite color?")){
+                       text = "All of 'em."; 
+                    }else if (message.includes("What is your favorite color?")){
+                       text = "All of 'em."; 
+                    }else if (message.includes("What is your favorite color?")){
+                       text = "All of 'em."; 
+                    }
+                    else{
+                        text = "Mmmm. My responses are limited. Looking forward to the Weekend.";
+                    }
+                    
+                    console.log(message);
+                    console.log(text);
+                    
+                    setTimeout(function(){ 
+                            
+                        let newaIResponse = document.createElement('div');
+                        newaIResponse.classList.add("container");
+                        newaIResponse.classList.add("darker");
+                        newaIResponse.innerHTML = `
+                        <img src="/w3images/bandmember.jpg" alt="Avatar">
+                        <p>${text}</p>
+                        <span class="time-right">11:02</span>
+                        `;
+                        chatBox.appendChild(newaIResponse);
+                        typeNotifier.style.display = "none";
+                    }, random(aIResponseTimes));
+                }
+            });
+        </script>
+    </body>
+</html>
